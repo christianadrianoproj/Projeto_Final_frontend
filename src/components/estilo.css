@@ -1,0 +1,19 @@
+.conteudoDia{
+    background-color: white;
+    color: black;
+}
+
+.conteudoTarde{
+    background-color: yellow;
+    color: black;
+}
+
+.conteudoNoite{
+    background-color: white;
+    color: blue;
+}
+
+.conteudoMadrugada{
+    background-color: blue;
+    color: white;
+}
