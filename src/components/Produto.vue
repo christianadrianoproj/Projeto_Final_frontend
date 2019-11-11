@@ -46,7 +46,7 @@ export default {
     }
   },
   mounted () {
-        axios.get('https://cors-anywhere.herokuapp.com/https://api-web-christian.herokuapp.com/produto'). then ( response => {
+        axios.get('/produto'). then ( response => {
                     this.produtos = response.data        
         });
   },  
@@ -64,7 +64,7 @@ export default {
     },  
 
     inserir (produto) {
-        axios.post('https://cors-anywhere.herokuapp.com/https://api-web-christian.herokuapp.com/produto' , produto). then 
+        axios.post('/produto' , produto). then 
                           ( response => {
                                 this.produtos.push ( response.data )
                           }). catch ( error => {
@@ -78,7 +78,7 @@ export default {
             return c.idProduto == produto.idProduto;
         });
         if (idx > -1) {
-            axios.post('https://cors-anywhere.herokuapp.com/https://api-web-christian.herokuapp.com/produto' , produto). then 
+            axios.post('/produto' , produto). then 
                           ( response => {
                                 produto = response.data;
                                 this.produtos[idx] = produto;
@@ -92,7 +92,7 @@ export default {
 
     editar(produto) {
         this.produtoEditar = Object.assign({}, produto);
-        axios.get ('https://cors-anywhere.herokuapp.com/https://api-web-christian.herokuapp.com/produto/' + produto.idProduto ). then ( response => {
+        axios.get ('/produto/' + produto.idProduto ). then ( response => {
               this.produtoEditar = response.data
               this.showForm = true
         })   
@@ -100,7 +100,7 @@ export default {
 
     excluir(produto) {
         if (confirm("Excluir registro?")) {      
-            axios.delete('https://cors-anywhere.herokuapp.com/https://api-web-christian.herokuapp.com/produto/' + produto.idProduto). then ( response => {
+            axios.delete('/produto/' + produto.idProduto). then ( response => {
                     this.produtos.splice ( this.produtos.indexOf (produto), 1 )
             }). catch ( error => {
                   alert ( 'Erro na exclusão do produto' )

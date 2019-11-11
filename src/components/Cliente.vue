@@ -46,7 +46,7 @@ export default {
     }
   },
   mounted () {
-        axios.get('https://cors-anywhere.herokuapp.com/https://api-web-christian.herokuapp.com/cliente'). then ( response => {
+        axios.get('/cliente'). then ( response => {
                     this.clientes = response.data        
         });
   },  
@@ -64,7 +64,7 @@ export default {
     },  
 
     inserir (cliente) {
-        axios.post('https://cors-anywhere.herokuapp.com/https://api-web-christian.herokuapp.com/cliente' , cliente). then 
+        axios.post('/cliente' , cliente). then 
                           ( response => {
                                 this.clientes.push ( response.data )
                           }). catch ( error => {
@@ -78,7 +78,7 @@ export default {
             return c.idCliente == cliente.idCliente;
         });
         if (idx > -1) {
-            axios.post('https://cors-anywhere.herokuapp.com/https://api-web-christian.herokuapp.com/cliente' , cliente). then 
+            axios.post('/cliente' , cliente). then 
                           ( response => {
                                 cliente = response.data;
                                 this.clientes[idx] = cliente;
@@ -92,7 +92,7 @@ export default {
 
     editar(cliente) {
         this.clienteoEditar = Object.assign({}, cliente);
-        axios.get ('https://cors-anywhere.herokuapp.com/https://api-web-christian.herokuapp.com/cliente/' + cliente.idCliente ). then ( response => {
+        axios.get ('/cliente/' + cliente.idCliente ). then ( response => {
               this.clienteEditar = response.data
               this.showForm = true
         })   
@@ -100,7 +100,7 @@ export default {
 
     excluir(cliente) {
         if (confirm("Excluir registro?")) {      
-            axios.delete('https://cors-anywhere.herokuapp.com/https://api-web-christian.herokuapp.com/cliente/' + cliente.idCliente). then ( response => {
+            axios.delete('/cliente/' + cliente.idCliente). then ( response => {
                     this.clientes.splice ( this.clientes.indexOf (cliente), 1 )
             }). catch ( error => {
                   alert ( 'Erro na exclusão do cliente' )

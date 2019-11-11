@@ -46,7 +46,7 @@ export default {
     }
   },
   mounted () {
-        axios.get('https://cors-anywhere.herokuapp.com/https://api-web-christian.herokuapp.com/login'). then ( response => {
+        axios.get('/login'). then ( response => {
                     this.logins = response.data        
         });
   },  
@@ -66,7 +66,7 @@ export default {
     },  
 
     inserir (login) {
-        axios.post('https://cors-anywhere.herokuapp.com/https://api-web-christian.herokuapp.com/login' , login). then 
+        axios.post('/login' , login). then 
                           ( response => {
                                 this.logins.push ( response.data )
                           }). catch ( error => {
@@ -80,7 +80,7 @@ export default {
             return c.id == login.id;
         });
         if (idx > -1) {
-            axios.post('https://cors-anywhere.herokuapp.com/https://api-web-christian.herokuapp.com/login' , login). then 
+            main.post('/login' , login). then 
                           ( response => {
                                 login = response.data;
                                 this.logins[idx] = login;
@@ -94,7 +94,7 @@ export default {
 
     editar(login) {
         this.loginEditar = Object.assign({}, login);
-        axios.get ('https://cors-anywhere.herokuapp.com/https://api-web-christian.herokuapp.com/login/' + login.id ). then ( response => {
+        axios.get ('/login/' + login.id ). then ( response => {
               this.loginEditar = response.data
               this.showForm = true
         })   
@@ -102,7 +102,7 @@ export default {
 
     excluir(login) {
         if (confirm("Excluir registro?")) {      
-            axios.delete('https://cors-anywhere.herokuapp.com/https://api-web-christian.herokuapp.com/login/' + login.id). then ( response => {
+            axios.delete('/login/' + login.id). then ( response => {
                     this.logins.splice ( this.logins.indexOf (login), 1 )
             }). catch ( error => {
                   alert ( 'Erro na exclusão do login' )
