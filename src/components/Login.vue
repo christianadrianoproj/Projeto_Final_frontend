@@ -1,7 +1,5 @@
 <template> 
   <div>
-    <H2>***** Logins *****</H2>
-    </br>
     <table class="table is-bordered">
         <thead>
           <tr>
@@ -80,7 +78,7 @@ export default {
             return c.id == login.id;
         });
         if (idx > -1) {
-            main.post('/login' , login). then 
+            axios.post('/login' , login). then 
                           ( response => {
                                 login = response.data;
                                 this.logins[idx] = login;

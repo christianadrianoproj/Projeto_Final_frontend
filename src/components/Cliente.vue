@@ -1,7 +1,5 @@
 <template> 
   <div>
-    <H2>***** Clientes *****</H2>
-    </br>
     <table class="table is-bordered">
         <thead>
           <tr>

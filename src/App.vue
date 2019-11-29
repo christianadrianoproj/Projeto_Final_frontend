@@ -28,8 +28,10 @@
               </a>
               <a class="navbar-item" href>
                 <router-link class="nav-link" to="/cliente">Clientes</router-link>
-              </a>
+              </a>           
             </div>
+            <a class="navbar-link" href><router-link class="nav-link" to="/venda">Efetuar</router-link></a>   
+            <a class="navbar-link" href><router-link class="nav-link" to="/produtosvendidos">Produtos Vendidos</router-link></a>                        
           </div>
         </div>
       </div>
