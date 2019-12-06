@@ -1,15 +1,22 @@
+html
+{
+    background: gray;
+
+}
+
+
 .conteudoDia{
-    background-color: white;
+    background-color: gray;
     color: black;
 }
 
 .conteudoTarde{
-    background-color: yellow;
+    background-color: rgb(95, 91, 95);
     color: black;
 }
 
 .conteudoNoite{
-    background-color: white;
+    background-color: gray;
     color: blue;
 }
 

@@ -7,7 +7,7 @@ import Login from './components/Login'
 import Produto from './components/Produto'
 import Cliente from './components/Cliente'
 import Venda from './components/Venda'
-import Home from './components/Home'
+import Home from './components/Principal'
 import ProdutosVendidos from './components/ProdutosVendidos'
 import moment from 'moment'
 
@@ -30,7 +30,8 @@ Vue.use(VueRouter)
 const routes = [
   /*{ path: '*', component: NotFoundComponent },
   { path: '/', component: App, alias: 'principal' }, */
-  { path: '/', name: '/home', component: Home },  
+  { path: '/',  component: App },
+  {path:'/home',name:'Home',component:Home},  
   { path: '/login', component: Login },
   { path: '/produto', component: Produto },
   { path: '/cliente', component: Cliente },   
@@ -39,11 +40,11 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  /*mode: 'history',*/
-  routes 
+  mode: "history",
+  routes
 })
 
 new Vue({
+  router,
   render: h => h(App),
-  router
 }).$mount('#app')

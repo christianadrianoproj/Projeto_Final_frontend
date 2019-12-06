@@ -1,50 +1,97 @@
 <template>
-  <div id="home">
-    <nav class="navbar is-transparent">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io" target="_blank">
-          <img src="https://bulma.io/images/bulma-logo.png" alt width="112" height="28" />
-        </a>
-        <div class="navbar-burger burger" data-target="navbarExTransparent">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-
-      <div id="navbarTransparent" class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item" href>
-            <router-link class="nav-link" to="/home">Home</router-link>
-          </a>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link" href>Cadastros</a>
-            <div class="navbar-dropdown is-boxed">
-              <a class="navbar-item" href>
-                <router-link class="nav-link" to="/login">Logins</router-link>
-              </a>
-              <a class="navbar-item" href>
-                <router-link class="nav-link" to="/produto">Produtos</router-link>
-              </a>
-              <a class="navbar-item" href>
-                <router-link class="nav-link" to="/cliente">Clientes</router-link>
-              </a>           
-            </div>
-            <a class="navbar-link" href><router-link class="nav-link" to="/venda">Efetuar</router-link></a>   
-            <a class="navbar-link" href><router-link class="nav-link" to="/produtosvendidos">Produtos Vendidos</router-link></a>                        
-          </div>
-        </div>
-      </div>
-    </nav>
-    <router-view />
+  <div class="card">
+     <p class="title" style="position:relative;left:42%;top:20%;">
+       Bem Vindo
+      </p>
+    <form class="form-signin" @submit.prevent="login">
+      <h2 class="form-signin-heading">Entrar</h2>
+      <input v-model="teste.login" type="text" id="inputEmail" class="input is-primary" placeholder="Login" required autofocus>
+      <input v-model="teste.senha" type="password" id="inputPassword" class="input is-primary" placeholder="Senha" required>
+      <button style="margin-left:100px;" class="button is-success" type="submit">Conectar</button>
+    </form>
   </div>
 </template>
+
 <script>
+import axios from 'axios'
+import VueRouter from 'vue-router'
+import Vue from 'vue'
 export default {
-  name: "App"
-};
+  components:{
+    axios,
+    VueRouter
+  },
+  name: 'Login',
+  data () {
+    return {
+      teste: {
+        login:null,
+        senha:null
+      }
+    }
+  },
+  methods: {
+    login () {
+        axios.post('/login/autentica',this.teste). then ( response => {
+                    if(response.data == 'sucesso!'){
+                      this.$router.push('/Venda' );
+                    }else{
+                      alert('senha invalida')
+                    }        
+        });
+    }
+  }
+}
 </script>
-<style>
-#app {
+
+<style lang="css">
+input
+{
+  margin: 10px;
+}
+body {
+  background: #605B56;
+}
+
+.login-wrapper {
+  background: #fff;
+  width: 70%;
+  margin: 12% auto;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 10% 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 </style>
+
+Let’s look closer at th

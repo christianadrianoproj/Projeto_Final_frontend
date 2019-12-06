@@ -1,5 +1,5 @@
 <template> 
-  <div>
+  <div style="padding: 10%; margin-left: 15%;">
     <table class="table is-bordered">
         <thead>
           <tr>
@@ -81,6 +81,10 @@ li {
 
 a {
   color: #42b983;
+}
+a:hover
+{
+  color: black;
 }
 
 </style>
