@@ -9,6 +9,7 @@ import Cliente from './components/Cliente'
 import Venda from './components/Venda'
 import Home from './components/Principal'
 import ProdutosVendidos from './components/ProdutosVendidos'
+import Autentica from './components/Autentica'
 import moment from 'moment'
 
 Vue.config.productionTip = false
@@ -28,15 +29,28 @@ axios.defaults.baseURL = 'https://api-web-christian.herokuapp.com'
 Vue.use(VueRouter)
 
 const routes = [
-  /*{ path: '*', component: NotFoundComponent },
-  { path: '/', component: App, alias: 'principal' }, */
-  { path: '/',  component: App },
-  {path:'/home',name:'Home',component:Home},  
+  {
+    path: '/',
+    redirect: {
+        name: "App"
+    }
+},
+{
+    path: "/autentica",
+    name: "autentica",
+    component: Autentica
+ },
+{
+    path: "/home",
+    name: "home",
+    component: Home
+},
+  { path: '/', component: App, name: 'App' },
   { path: '/login', component: Login },
   { path: '/produto', component: Produto },
   { path: '/cliente', component: Cliente },   
   { path: '/produtosvendidos', component: ProdutosVendidos },     
-  { path: '/venda', component: Venda }     
+  { path: '/venda', component: Venda },
 ]
 
 const router = new VueRouter({

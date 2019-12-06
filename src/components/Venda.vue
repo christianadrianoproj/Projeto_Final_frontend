@@ -25,7 +25,7 @@
         </tr>
       </tbody>
     </table>
-    <efetua-venda :show="showForm" :venda="vendaEditar" @close="close" @save="salvar"></efetua-venda>
+    <efetua-venda :show="showForm" :venda="vendaEditar" @close="close" @save="salvar"></efetua-venda> 
   </div>
 </template>
 

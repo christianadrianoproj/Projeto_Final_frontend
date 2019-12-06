@@ -6,7 +6,7 @@
         <p class="modal-card-title">Venda</p>
         <button class="delete" aria-label="close" @click="$emit('close')"></button>
       </header>
-      <form v-if="vendaEditar">
+      <form  @submit.prevent="salvar()" v-if="vendaEditar">
         <section class="modal-card-body">
           <div class="field is-horizontal">
             <div class="field-label">
@@ -142,7 +142,7 @@
           </div>
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success" @click="salvar()">Salvar</button>         
+          <button class="button is-success">Salvar</button>         
           <button class="button" @click="$emit('close')">Cancelar</button>
         </footer>
       </form>
@@ -201,10 +201,6 @@ export default {
         retorno = false;
         alert("Informe o Cliente!");
       }
-      if((retorno) && (this.vendaEditar.itens.length < 1)) {
-        retorno = false;
-        alert("Informe pelo menos um Item!");
-      }      
       return retorno;
     },
     salvar() {
